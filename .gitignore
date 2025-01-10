@@ -1,24 +1,2 @@
-# Ignore environment files containing sensitive information
 .env
-
-# Ignore node_modules directory
-node_modules/
-
-# Ignore Docker related files
-.docker/
-docker-image.tar
-
-# Ignore log files
-*.log
-
-# IDE-specific files
-.vscode/
-.idea/
-
-# OS-specific files
-.DS_Store
-Thumbs.db
-
-# Ignore build output directories
-/dist/
-/build/
+node_modules

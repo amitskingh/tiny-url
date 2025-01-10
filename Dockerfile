@@ -1,21 +1,22 @@
-# Use the official Node.js 22.12.0 (LTS) image from Docker Hub
+# Use Node.js as the base image
 FROM node:22-alpine
 
-# Set the working directory in the container
-WORKDIR /app
+# Set the working directory
+WORKDIR /usr/src/app
 
-# Copy the package.json and package-lock.json
-COPY package.json package.json
-COPY package-lock.json package-lock.json
+# Copy package.json and package-lock.json
+COPY package*.json ./
 
-# Install the dependencies
+# Install dependencies
 RUN npm install
+RUN npm install -g nodemon
 
-# Copy the rest of your application files into the container
+
+# Copy the application code
 COPY . .
 
-# Expose the port your app will run on (example: 3000)
+# Expose the application port
 EXPOSE 3000
 
-# Run the application using nodemon for auto-reloading
-CMD ["npx", "nodemon", "app.js"]
+# Start the application
+CMD ["npm", "run", "dev", "--legacy-watch"]
